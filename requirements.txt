@@ -1,0 +1,10 @@
+pydantic
+pydantic-ai
+numpy
+matplotlib
+astropy
+lenstronomy
+pyHalo
+colossus
+scipy
+asyncio

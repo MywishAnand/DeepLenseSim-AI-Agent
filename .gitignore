@@ -1,0 +1,21 @@
+# Environment
+venv/
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Output & Cache
+output/
+debug.py
+test.py
+reproduce_error.py
+reproduce_error_full.py
+reproduce_agent_error.py
+verify_hardening.py
+
+# OS
+.DS_Store
+.idea/
+.vscode/
