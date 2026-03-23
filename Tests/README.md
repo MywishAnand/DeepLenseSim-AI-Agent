@@ -1,6 +1,6 @@
 # DeepLenseSim Agent: 20 Test Prompts
 
-The model was tested with the following 20 prompts to verify the functionality, physics, and safety constraints of this DeepLenseSim Agent. The output files in .png and .npy formats are shared in this directory.
+Following 20 prompts are run to verify the functionality, astronomy, and safety constraints of the **DeepLense Simulation Agent**. The output files in .png and .npy formats are shared here.
 
 ## 🔭 Basic Model & Instrument Verification
 1. **Model I:** "Generate a Model I simulation with CDM substructure and a 1e12 halo mass."
