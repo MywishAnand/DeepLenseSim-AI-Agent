@@ -7,7 +7,7 @@ __pycache__/
 *.pyd
 
 # Output & Cache
-# We now include the Tests/ directory as requested
+output/
 debug.py
 test.py
 reproduce_error.py

@@ -30,7 +30,7 @@ def run_deeplensesim(config: SimulationConfig) -> dict:
     if DeepLens is None:
         return {"error": "DeepLenseSim or its dependencies are not properly installed."}
 
-    output_dir = os.path.join(os.path.dirname(__file__), "Tests")
+    output_dir = os.path.join(os.path.dirname(__file__), "output")
     os.makedirs(output_dir, exist_ok=True)
     
     generated_files = []

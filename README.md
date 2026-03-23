@@ -35,10 +35,12 @@ python agent.py
 ## 📂 Project Structure
 - `agent.py`: Main Pydantic AI agent logic & chat loop.
 - `tools.py`: Simulation backend with Colossus stability patches.
-- `schemas.py`: Rigid Pydantic validation schemas.
+- `Schemas.py`: Rigid Pydantic validation schemas.
 - `DeepLenseSim/`: Submodule containing the core physics library.
-- `Tests/`: Generated `.npy` and `.png` verification results (pushed to repo).
+- `Tests/`: Static directory of example simulation results (pushed to repo).
+- `output/`: Functional directory for subsequent simulation outputs (ignored by git).
 - `tests.md`: Master list of 20 verification prompts.
+
 
 ---
 
