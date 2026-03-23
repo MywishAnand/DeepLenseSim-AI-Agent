@@ -32,9 +32,9 @@ pip install -r requirements.txt
 python agent.py
 ```
 ## How to use
-1. Start Ollama with ollama pull llama3.2.
-2. Run source venv/bin/activate.
-3. Start the agent: python agent.py.
+1. Start Ollama with ```ollama pull llama3.2```.
+2. Run ```bash source venv/bin/activate```.
+3. Start the agent: ```bash python agent.py```.
 4. Give prompt describing the desired simulation (e.g., substructure type, number of images, redshifts, etc.).
    Prompt example: "Generate 3 Model IV simulations with cdm, halo mass 2e12, and sigma_v 280."
 
