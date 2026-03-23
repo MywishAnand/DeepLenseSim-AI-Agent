@@ -25,6 +25,12 @@ pip install -r requirements.txt
 ```bash
 python agent.py
 ```
+## How to use
+1. Start Ollama with ollama pull llama3.2.
+2. Run source venv/bin/activate.
+3. Start the agent: python agent.py.
+4. Give prompt.
+   Prompt example: "Generate 3 Model IV simulations with cdm, halo mass 2e12, and sigma_v 280."
 
 ## 🛡️ Hardened Safety Features
 - **Hardened Human-in-the-Loop**: The agent is now strictly forbidden from guessing core parameters. It will actively explain constraint violations (e.g., $z_{gal} \leq z_{halo}$) back to the user.
