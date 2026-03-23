@@ -15,7 +15,7 @@ Following 20 prompts were run to verify the functionality, astronomy, and safety
 8. **Model IV CDM:** "Model IV with CDM substructure, 1e12 halo mass, and 1 simulation."
 
 ## 🛰️ Advanced Mathematical & Astro-Parameters
-9. **Redshift Control & Stability:** "Model I, CDM, 1e12 mass, with z_halo set to 0.3 and z_gal set to 0.7." (Verified to work with the Colossus fix).
+9. **Redshift Control & Stability:** "Model I, CDM, 1e12 mass, with z_halo set to 0.3 and z_gal set to 0.7."
 10. **Velocity Dispersion (Model IV):** "Run Model IV, CDM, 1e12 mass, and set sigma_v to 280."
 11. **Source Offsets (Model IV):** "Model IV, no_sub, mass 1e12, source_pos_x 0.2 and source_pos_y -0.1."
 12. **Rotation (Model IV):** "Model IV, CDM, 1e12 mass, source_angle 0.78 (radians)."
@@ -29,5 +29,5 @@ Following 20 prompts were run to verify the functionality, astronomy, and safety
 16. **Missing Model:** "Run a simulation with 1e12 mass and CDM substructure."
 17. **Missing Mass:** "Run a Model III simulation with no substructure."
 18. **The "Everything" Vague Prompt:** "I want to run a gravitational lensing simulation for my research."
-19. **Redshift Constraint Violation:** "Model I, CDM, 1e12 mass, z_gal 1.5." (Should trigger Pydantic validation error).
-20. **Halo Redshift Conflict:** "Model II, CDM, 1e12 mass, z_halo 0.8, z_gal 0.5." (Should trigger lens library error).
+19. **Redshift Constraint Violation:** "Model I, CDM, 1e12 mass, z_gal 1.5."
+20. **Halo Redshift Conflict:** "Model II, CDM, 1e12 mass, z_halo 0.8, z_gal 0.5."
