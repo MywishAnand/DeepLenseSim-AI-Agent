@@ -1,33 +1,99 @@
+````md
 # 🌌 DeepLense Simulation Agent
 
-A conversational, context-aware agentic workflow for generating Gravitational Lensing images with the **DeepLenseSim** simulation pipeline. The agent 
-- accepts and responds to user prompts in natural language with the Ollama 3.2B model.
-- orchestrates the calls to DeepLenseSim via Pydantic AI.
-- generates images in .npy (with structured metadata) and .png (for visualisation) formats.
-- supports all four model configurations of DeepLenseSim.
-- includes Human-in-the-loop component and follow-up questions for clarifications before execution.
-- comprises a contextual guard to prevent any guessing or hallucinations by the Ollama model.
+A **conversational, context-aware agentic system** for generating **Gravitational Lensing simulations** using the **DeepLenseSim** pipeline.
+
+This project combines **LLMs + physics simulation + agentic workflows** to enable **prompt-driven scientific experimentation** with strict physical validity.
+
+---
+
+## 🚀 Core Capabilities
+
+- 💬 **Natural Language Interface**  
+  Interact with the system using plain English via **Ollama (Llama 3.2B)**.
+
+- 🧠 **Agentic Workflow Orchestration**  
+  Uses **Pydantic AI** to structure, validate, and execute simulation pipelines.
+
+- 🖼️ **Simulation Output Formats**  
+  - `.npy` → Structured data with metadata  
+  - `.png` → Visualization-ready outputs  
+
+- ⚙️ **Full DeepLenseSim Coverage**  
+  Supports **all four model configurations**.
+
+- 👨‍💻 **Human-in-the-Loop Control**  
+  Ensures user confirmation through follow-up questions before execution.
+
+- 🛡️ **Anti-Hallucination Guardrails**  
+  Prevents the LLM from guessing or fabricating simulation parameters.
+
+---
 
 ## ✨ Unique Functionalities
-- **🧠 Contextual Guard (No Hallucination Zone)**: Unlike standard AI agents, this system is **physically prohibited** from guessing parameters. It injects your raw prompt directly into the simulation tool to verify you actually typed the Model and Mass, ensuring 100% human-in-the-loop fidelity.
-- **⚛️ Physics-Strict Constraints**: Automated Pydantic-level validation for astrophysical consistency:
-    - **Redshift Ordering**: Rejects $z_{source} \leq z_{lens}$ with a scientific explanation.
-    - **Redshift Capping**: Hard-capped at $z \leq 1.0$ for instrument consistency.
-- **🛠️ Numerical Stabilization Patches**: Injected a global `colossus` background cosmology (`planck15`) in `tools.py`, preventing the "Interpolation Range" crashes (`x_new < 0.001`) common in custom-redshift simulations.
-- **🌈 Model IV Multi-Band Synthesis**: Integrated a dedicated pipeline for **3-channel RGB synthesis** (`g`, `r`, `i` bands) for Model IV Euclid simulations.
 
-## 🚀 Quick Start
+### 🧠 Contextual Guard (No Hallucination Zone)
 
-### 1. Prerequisites
-- **Ollama**: Install and run Ollama with `llama3.2` pulled:
+Unlike typical AI agents, this system:
+
+- 🚫 **Cannot infer or guess parameters**
+- ✅ Injects **raw user prompts directly into simulation validation**
+- 🔍 Verifies explicit user input (e.g., model type, mass)
+
+👉 Result: **100% user-driven, verifiable simulations**
+
+---
+
+### ⚛️ Physics-Strict Constraints
+
+Built-in **astrophysical validation layer** using Pydantic:
+
+- 🌌 **Redshift Ordering Enforcement**  
+  Rejects invalid configurations where:  
+  `z_source ≤ z_lens`
+
+- 📏 **Redshift Upper Bound**  
+  Enforces:  
+  `z ≤ 1.0` (instrument consistency)
+
+---
+
+### 🛠️ Numerical Stability Enhancements
+
+- Integrated **global cosmology (`planck15`) via `colossus`**
+- Prevents common interpolation crashes:  
+  `x_new < 0.001`
+
+👉 Ensures **robust simulations across custom redshift inputs**
+
+---
+
+### 🌈 Model IV Multi-Band Synthesis
+
+- Dedicated pipeline for **RGB image generation**
+- Supports **Euclid-like simulations** using:
+  - `g`, `r`, `i` bands
+
+---
+
+## ⚡ Quick Start
+
+### 1️⃣ Prerequisites
+
+- 🧠 **Ollama** (with Llama 3.2 model)
+
   ```bash
-  ollama run llama3.2
-  ```
-- **Python 3.9+**
+  ollama pull llama3.2
+````
 
-### 2. Installation
+* 🐍 **Python 3.9+**
+
+---
+
+### 2️⃣ Installation
+
 ```bash
-# Set up virtual environment
+# Create virtual environment
 python -m venv venv
 source venv/bin/activate
 
@@ -35,22 +101,83 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 3. Run the Agent
+---
+
+### 3️⃣ Run the Agent
+
 ```bash
 python agent.py
 ```
-## How to proceed
-1. Start Ollama with ```ollama pull llama3.2```.
-2. Run ```source venv/bin/activate```.
-3. Start the agent: ```python agent.py```.
-5. Give prompt describing the desired simulation (e.g., model number, substructure type, number of images, redshifts).
-   Prompt example: "Generate 3 Model IV simulations with cdm, halo mass 2e12, and sigma_v 280."
+
+---
+
+## 🧪 How to Use
+
+1. Start Ollama:
+
+   ```bash
+   ollama run llama3.2
+   ```
+
+2. Activate environment:
+
+   ```bash
+   source venv/bin/activate
+   ```
+
+3. Launch the agent:
+
+   ```bash
+   python agent.py
+   ```
+
+4. Provide a simulation prompt:
+
+   **Example:**
+
+   ```
+   Generate 3 Model IV simulations with cdm, halo mass 2e12, and sigma_v 280.
+   ```
+
+---
 
 ## 📂 Project Structure
-- `agent.py`: Main Pydantic AI agent logic & chat loop.
-- `tools.py`: Simulation backend with Colossus stability patches.
-- `Schemas.py`: Rigid Pydantic validation schemas.
-- `DeepLenseSim/`: Submodule containing the core physics library.
-- `Tests/README.md`: Master list of 20 verification prompts, the agent was tested upon.
-- `Tests/`: Simulation outputs of the test prompts.
-- `output/`: Directory for subsequent simulation outputs.
+
+```
+├── agent.py              # Core agent logic & conversational loop
+├── tools.py              # Simulation backend + stability patches
+├── Schemas.py            # Pydantic validation schemas
+├── DeepLenseSim/         # Physics simulation submodule
+├── Tests/
+│   ├── README.md         # 20 validation prompts
+│   └── outputs/          # Verified simulation outputs
+├── output/               # Generated results
+```
+
+---
+
+## 🎯 Why This Project Matters
+
+This project sits at the intersection of:
+
+* 🤖 **AI Agents**
+* 🌌 **Astrophysical Simulation**
+* 🧪 **Scientific Workflows**
+
+It enables:
+
+* Faster experimentation in gravitational lensing
+* Reliable, reproducible simulations
+* Human-controlled AI-assisted research pipelines
+
+---
+
+## 🔮 Future Improvements
+
+* Add **web UI / dashboard**
+* Support **batch experiment tracking**
+* Integrate with **ML pipelines for lens detection**
+* Extend to **real observational datasets**
+
+```
+```
