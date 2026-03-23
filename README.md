@@ -31,11 +31,11 @@ pip install -r requirements.txt
 ```bash
 python agent.py
 ```
-## How to use
+## How to proceed
 1. Start Ollama with ```ollama pull llama3.2```.
-2. Run ```bash source venv/bin/activate```.
-3. Start the agent: ```bash python agent.py```.
-4. Give prompt describing the desired simulation (e.g., substructure type, number of images, redshifts, etc.).
+2. Run ```source venv/bin/activate```.
+3. Start the agent: ```python agent.py```.
+5. Give prompt describing the desired simulation (e.g., model number, substructure type, number of images, redshifts).
    Prompt example: "Generate 3 Model IV simulations with cdm, halo mass 2e12, and sigma_v 280."
 
 ## 📂 Project Structure
@@ -45,7 +45,7 @@ python agent.py
 - `DeepLenseSim/`: Submodule containing the core physics library.
 - `Tests/README.md`: Master list of 20 verification prompts, this agent has been tested on.
 - `Tests/`: Simulation outputs of the test prompts.
-- `output/`: Functional directory for subsequent simulation outputs (ignored by git).
+- `output/`: Directory for subsequent simulation outputs.
 
 ## 🛡️ Hardened Safety Features
 - **Hardened Human-in-the-Loop**: The agent is now strictly forbidden from guessing core parameters. It will actively explain constraint violations (e.g., $z_{gal} \leq z_{halo}$) back to the user.
