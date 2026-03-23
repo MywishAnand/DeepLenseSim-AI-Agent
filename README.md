@@ -1,4 +1,4 @@
-# 🌌 DeepLense Simulation Agent
+# 🌌 DeepLenseSim AI Agent
 
 A **conversational, context-aware agentic system** for generating **Gravitational Lensing simulations** using the **DeepLenseSim** pipeline.
 
