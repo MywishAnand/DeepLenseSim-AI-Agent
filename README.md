@@ -1,4 +1,3 @@
-````md
 # 🌌 DeepLense Simulation Agent
 
 A **conversational, context-aware agentic system** for generating **Gravitational Lensing simulations** using the **DeepLenseSim** pipeline.
@@ -179,5 +178,4 @@ It enables:
 * Integrate with **ML pipelines for lens detection**
 * Extend to **real observational datasets**
 
-```
 ```
