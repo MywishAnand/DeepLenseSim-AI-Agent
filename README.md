@@ -29,47 +29,44 @@ A **conversational, context-aware agentic system** for generating **Gravitationa
 
 ## ✨ Unique Functionalities
 
-#### 🧠 Contextual Guard (No Hallucination Zone)
+- 🧠 **Contextual Guard (No Hallucination Zone)**
 
-Unlike typical AI agents, this system:
+  Unlike typical AI agents, this system:
 
-- 🚫 **Cannot infer or guess parameters**
-- ✅ Injects **raw user prompts directly into simulation validation**
-- 🔍 Verifies explicit user input (e.g., model type, mass)
+  - 🚫 **Cannot infer or guess parameters**
+  - ✅ Injects **raw user prompts directly into simulation validation**
+  - 🔍 Verifies explicit user input (e.g., model type, mass)
+  
+  👉 Result: **100% user-driven, verifiable simulations**
 
-👉 Result: **100% user-driven, verifiable simulations**
 
----
+- ⚛️ **Physics-Strict Constraints**
 
-#### ⚛️ Physics-Strict Constraints
+  Built-in **astrophysical validation layer** using Pydantic:
+  
+  - 🌌 **Redshift Ordering Enforcement**  
+    Rejects invalid configurations where:  
+    `z_source ≤ z_lens`
+  
+  - 📏 **Redshift Upper Bound**  
+    Enforces:  
+    `z ≤ 1.0` (instrument consistency)
 
-Built-in **astrophysical validation layer** using Pydantic:
 
-- 🌌 **Redshift Ordering Enforcement**  
-  Rejects invalid configurations where:  
-  `z_source ≤ z_lens`
+- 🛠️ **Numerical Stability Enhancements**
+  
+  - Integrated **global cosmology (`planck15`) via `colossus`**
+  - Prevents common interpolation crashes:  
+    `x_new < 0.001`
+  
+  👉 Ensures **robust simulations across custom redshift inputs**
 
-- 📏 **Redshift Upper Bound**  
-  Enforces:  
-  `z ≤ 1.0` (instrument consistency)
 
----
-
-#### 🛠️ Numerical Stability Enhancements
-
-- Integrated **global cosmology (`planck15`) via `colossus`**
-- Prevents common interpolation crashes:  
-  `x_new < 0.001`
-
-👉 Ensures **robust simulations across custom redshift inputs**
-
----
-
-#### 🌈 Model IV Multi-Band Synthesis
-
-- Dedicated pipeline for **RGB image generation**
-- Supports **Euclid-like simulations** using:
-  - `g`, `r`, `i` bands
+- 🌈 Model IV Multi-Band Synthesis
+  
+  - Dedicated pipeline for **RGB image generation**
+  - Supports **Euclid-like simulations** using:
+    - `g`, `r`, `i` bands
 
 ---
 
