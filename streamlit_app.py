@@ -123,8 +123,8 @@ st.markdown(
     """
     <div style="text-align: center; color: grey; font-size: 0.8rem;">
         © Created by Mywish Anand. 
-        <a href="https://github.com/MywishAnand/" target="_blank">
-            <img src="https://cdns.iconmonstr.com/wp-content/releases/preview/2012/240/iconmonstr-github-1.png" width="20" height="20" style="vertical-align: middle; margin-left: 5px;">
+        <a href="https://github.com/MywishAnand/" target="_blank" style="text-decoration: none; vertical-align: middle; margin-left: 5px;">
+            <img src="https://img.shields.io/badge/GitHub-MywishAnand-181717?style=flat-square&logo=github" alt="GitHub" style="vertical-align: middle;">
         </a>
     </div>
     """,
