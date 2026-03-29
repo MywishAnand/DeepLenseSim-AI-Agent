@@ -61,7 +61,7 @@ def extract_image_paths(text):
     return list(set(valid_paths))
 
 # Chat Input
-if prompt := st.chat_input("Ask for a simulation (e.g. 'Model I, CDM, 1e12 mass, z_halo 0.5, z_gal 1.0')"):
+if prompt := st.chat_input("Ask for a simulation (e.g. 'Model 1, CDM, 1e12 mass, z_halo 0.5, z_gal 1.0')"):
     # Display user message
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
