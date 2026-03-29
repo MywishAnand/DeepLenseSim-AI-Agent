@@ -73,8 +73,10 @@ if prompt := st.chat_input("Ask for a simulation (e.g. 'Model I, CDM, 1e12 mass,
         message_placeholder.markdown("🌌 *Simulating...*")
         
         try:
-            # Prepare Deps
-            deps = AgentDeps(user_prompt=prompt)
+            # Prepare Deps with full conversation history
+            user_messages = [m["content"] for m in st.session_state.messages if m["role"] == "user"]
+            full_history = "\\n".join(user_messages)
+            deps = AgentDeps(full_history=full_history)
             
             # Run Agent
             result = asyncio.run(deeplense_agent.run(

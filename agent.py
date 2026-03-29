@@ -7,17 +7,18 @@ from dataclasses import dataclass
 
 @dataclass
 class AgentDeps:
-    user_prompt: str
+    full_history: str
 
 # Define the system prompt with clear instructions for the human-in-the-loop fallback.
 SYSTEM_PROMPT = """
 You are an expert astrophysicist AI assistant for the DeepLense project. 
-Your primary goal is to help users generate strong lensing simulations using the `run_deeplens_simulation` tool.
+Your primary goal is to help users generate high-fidelity gravitational lensing simulations.
 
-### 🛡️ HUMAN-IN-THE-LOOP & SAFETY RULES
+### 🛡️ DECISIVENESS & SAFETY RULES
 1. **NO GUESSING**: Do NOT assume values for `model_type`, `substructure`, `main_halo_mass`, `z_halo`, or `z_gal`.
-2. **CLARIFICATION FIRST**: You MUST ask the user for missing details. If they just say "Run a simulation", you must NOT call the tool.
-3. **MANDATORY DECLARATION**: The tool will check if the user actually typed these values. If you try to guess, the tool will REJECT your call.
+2. **CLARIFICATION**: If parameters are missing, ask for them immediately. 
+3. **EXECUTE WHEN READY**: Once you have gathered all 5 mandatory parameters (Model, Substructure, Mass, Z_halo, Z_gal), PROCEED TO EXECUTE the simulation immediately. Do not ask for further confirmation once the data is complete.
+4. **CONTEXT AWARENESS**: The tool verifies the entire conversation history. If the user previously provided a value, it is considered valid for the current run.
 
 ### 📝 OUTPUT RULES
 - Explicitly list ALL generated file paths (`.npy` and `.png`). Never summarize them.
@@ -46,9 +47,9 @@ def run_deeplens_simulation(ctx: RunContext[AgentDeps], config: SimulationConfig
     
     ### CRITICAL CONSTRAINTS:
     - ONLY call this if the user EXPLICITLY provided: model_type, substructure, main_halo_mass, z_halo, and z_gal.
-    - If ANY are missing from the chat history, JUST ASK THE USER.
+    - If ANY are missing from the conversation history, JUST ASK THE USER.
     """
-    prompt = ctx.deps.user_prompt.lower()
+    history = ctx.deps.full_history.lower()
     
     # Verification logic: Ensure the user actually mentioned the core parameters
     # This stops the LLM from 'guessing' defaults.
@@ -59,11 +60,11 @@ def run_deeplens_simulation(ctx: RunContext[AgentDeps], config: SimulationConfig
     }
     
     missing = []
-    if not any(keyword in prompt for keyword in mandatory_checks["model"]):
+    if not any(keyword in history for keyword in mandatory_checks["model"]):
         missing.append("Model Type (I-IV)")
-    if not any(keyword in prompt for keyword in mandatory_checks["substructure"]):
+    if not any(keyword in history for keyword in mandatory_checks["substructure"]):
         missing.append("Substructure (CDM/Axion/No)")
-    if not any(keyword in prompt for keyword in mandatory_checks["mass"]):
+    if not any(keyword in history for keyword in mandatory_checks["mass"]):
         missing.append("Main Halo Mass")
         
     if missing:
@@ -88,8 +89,9 @@ async def chat_loop():
             if user_input.lower() in ("exit", "quit"):
                 break
                 
-            # Pass the current input as deps so the tool can verify it
-            deps = AgentDeps(user_prompt=user_input)
+            # Pass the cumulative history as deps so the tool can verify it
+            full_user_history = "\\n".join([m['content'] for m in message_history if hasattr(m, 'role') and m.role == 'user']) + "\\n" + user_input
+            deps = AgentDeps(full_history=full_user_history)
             
             result = await deeplense_agent.run(
                 user_input, 
