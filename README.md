@@ -3,7 +3,7 @@
 A **context-aware, conversational agentic system** for generating **Gravitational Lensing simulations** using the **DeepLenseSim** pipeline.
 
 #### Website: https://mywishanand.github.io/DeepLenseSim-AI-Agent/
-##### LinkedIN post: https://www.linkedin.com/posts/mywishanand_spacetime-einstein-gravitationallensing-share-7451318421989851136-qpIT/
+#### LinkedIN post: https://www.linkedin.com/posts/mywishanand_spacetime-einstein-gravitationallensing-share-7451318421989851136-qpIT/
 ---
 
 ## 🚀 Core Capabilities
