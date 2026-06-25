@@ -5,8 +5,8 @@ A **context-aware, conversational agentic system** for generating **Gravitationa
 #### Website: https://mywishanand.github.io/DeepLenseSim-AI-Agent/
 #### LinkedIN post: https://www.linkedin.com/posts/mywishanand_spacetime-einstein-gravitationallensing-share-7451318421989851136-qpIT/
 
-This project was submitted as an exercise for the Google Summer of Code 2026 project: **Agentic AI for Autonomous Gravitational Lensing Simulation Workflows**.
-#### My GSoC'26 Project Proposal: https://drive.google.com/file/d/1v_uMo1AITvWi6od_cvzq7Cq_F5uPlq8W/view 
+This project was submitted as an exercise for the Google Summer of Code 2026 project, **Agentic AI for Autonomous Gravitational Lensing Simulation Workflows**.
+#### GSoC'26 Project Proposal: https://drive.google.com/file/d/1v_uMo1AITvWi6od_cvzq7Cq_F5uPlq8W/view 
 
 ---
 
